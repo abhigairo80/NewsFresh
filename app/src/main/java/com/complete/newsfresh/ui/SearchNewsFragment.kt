@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     private lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter : NewsAdapter
+    private lateinit var newsAdapter : NewsAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as NewsActivity).newsViewModel
@@ -83,7 +83,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     var isLastPage = false
     var isScrolling = false
 
-    val scrollListener = object : RecyclerView.OnScrollListener(){
+    private val scrollListener = object : RecyclerView.OnScrollListener(){
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
                 isScrolling = true

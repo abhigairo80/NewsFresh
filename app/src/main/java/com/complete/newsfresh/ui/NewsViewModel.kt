@@ -18,13 +18,13 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-class NewsViewModel (app: Application,val repository: NewsRepository):AndroidViewModel(app){
+class NewsViewModel (app: Application, private val repository: NewsRepository):AndroidViewModel(app){
     val breakingNews:MutableLiveData<Resources<NewsResponse>> = MutableLiveData()
     val searchedQuery:MutableLiveData<Resources<NewsResponse>> = MutableLiveData()
     var breakingNewsPage = 1
     var searchedPageNumber = 1
-    var breakingNewsResponse: NewsResponse? =null
-    var searchNewsResponse: NewsResponse? =null
+    private var breakingNewsResponse: NewsResponse? =null
+    private var searchNewsResponse: NewsResponse? =null
     init{
         getBreakingNews("in")
     }

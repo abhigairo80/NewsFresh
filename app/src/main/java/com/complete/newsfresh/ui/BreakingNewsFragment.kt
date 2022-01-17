@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_breaking_news.*
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
     lateinit var viewModel:NewsViewModel
-    lateinit var newsAdapter : NewsAdapter
+    private lateinit var newsAdapter : NewsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +39,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         }
         Log.d("taget",findNavController().toString())
 
-        viewModel.breakingNews.observe(viewLifecycleOwner, Observer{response->
+        viewModel.breakingNews.observe(viewLifecycleOwner, { response->
              when(response){
                  is Resources.Success ->{
                      hideProgressBar()
@@ -79,7 +79,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     var isLastPage = false
     var isScrolling = false
 
-    val scrollListener = object : RecyclerView.OnScrollListener(){
+    private val scrollListener = object : RecyclerView.OnScrollListener(){
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
                 isScrolling = true
