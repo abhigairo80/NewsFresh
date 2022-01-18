@@ -20,7 +20,7 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val repository :NewsRepository = NewsRepository(ArticleDatabase(this))
+        val repository = NewsRepository(ArticleDatabase(this))
         val viewModelFactory = NewsViewModelProviderFactory(application,repository)
         newsViewModel = ViewModelProvider(this,viewModelFactory)[NewsViewModel::class.java]
 
